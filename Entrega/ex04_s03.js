@@ -8,24 +8,28 @@ Se nenhum argumento for passado, retorne "não recebeu parâmetro" */
 
 const rls = require("readline-sync");
 
-const a = parseInt(rls.question("Entre com o valor de a: "));
-const b = parseInt(rls.question("Entre com o valor de b: "));
-const c = parseInt(rls.question("Entre com o valor de c: "));
+let a = parseInt(rls.question("Entre com o valor de a: "));
+let b = parseInt(rls.question("Entre com o valor de b: "));
+let c = parseInt(rls.question("Entre com o valor de c: "));
 
 function operations(param1, param2, param3) {
-  if (param1 && param2 && param3) {
+  if (
+    isNaN(param1) == false &&
+    isNaN(param2) == false &&
+    isNaN(param3) == false
+  ) {
     return (param1 + param2) / param3;
-  } else if (param1 && param2 && !param3) {
+  } else if (isNaN(param1) == false && isNaN(param2) == false && !param3) {
     return param1 + param2;
-  } else if (param1 && !param2 && param3) {
+  } else if (isNaN(param1) == false && !param2 && isNaN(param3) == false) {
     return param1 + param3;
-  } else if (!param1 && param2 && param3) {
+  } else if (!param1 && isNaN(param2) == false && isNaN(param3) == false) {
     return param2 + param3;
-  } else if (param1 && !param2 && !param3) {
+  } else if (isNaN(param1) == false && !param2 && !param3) {
     return param1;
-  } else if (!param1 && param2 && !param3) {
+  } else if (!param1 && isNaN(param2) == false && !param3) {
     return param2;
-  } else if (!param1 && !param2 && param3) {
+  } else if (!param1 && !param2 && isNaN(param3) == false) {
     return param3;
   } else {
     return "Nenhum parametro foi recebido.";
